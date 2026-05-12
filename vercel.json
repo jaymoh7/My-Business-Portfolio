@@ -1,0 +1,26 @@
+# Vercel Configuration
+# This file tells Vercel how to build and deploy your app
+
+# Frontend build settings
+[build]
+  command = "npm run build"
+  output = "dist"
+
+# Environment variables
+[env]
+  VITE_API_URL = "@vite_api_url"
+
+# Backend settings (for serverless functions)
+[functions]
+  server/index.js = "nodejs18.x"
+
+# Redirects for SPA
+[[redirects]]
+  source = "/api/(.*)"
+  destination = "/api/$1"
+  status = 200
+
+[[redirects]]
+  source = "/(.*)"
+  destination = "/index.html"
+  status = 200
